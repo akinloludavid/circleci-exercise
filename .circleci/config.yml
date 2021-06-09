@@ -10,13 +10,11 @@ jobs:
       - image: cimg/node:14.15.0
     steps:
       - checkout
+      - run:         
+          name: Install all dependencies
+          command: yarn 
       - run: 
-          command: echo i rule the world
-        
-#         name: Install all dependencies
-#         command: yarn 
-#       - run: 
-#         name: Run test
-#         command: yarn test
+          name: Run test
+          command: yarn test
       
         
