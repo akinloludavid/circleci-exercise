@@ -4,6 +4,7 @@ workflows:
   testing: 
     jobs: 
       - test
+      - ubuntu
 jobs:
   test:
     docker:
@@ -17,4 +18,13 @@ jobs:
           name: Run test
           command: yarn test
       
+
+jobs: 
+  ubuntu:
+    docker: 
+      - image: ubuntu-latest
+    steps:
+      - checkout
+      run: echo hello world
+      run: whoami
         
