@@ -8,6 +8,7 @@ commands:
       - run: 
           name: Run test
           command: yarn test
+      - run: echo "hello world ${AUTH}"
 
 workflows: 
   testing: 
@@ -23,9 +24,9 @@ jobs:
     steps:
       - checkout
       - all_command
+    environment:
+      AUTH: key
       
-
-
   ubuntu:
     docker: 
       - image: circleci/node
