@@ -19,12 +19,12 @@ jobs:
           command: yarn test
       
 
-jobs: 
+
   ubuntu:
     docker: 
       - image: ubuntu-latest
     steps:
       - checkout
-      run: echo hello world
-      run: whoami
+      - run: echo hello world
+      - run: whoami
         
