@@ -1,22 +1,28 @@
 version: 2.1
-
-workflows: 
-  testing: 
-    jobs: 
-      - test
-      - ubuntu
-jobs:
-  test:
-    docker:
-      - image: cimg/node:14.15.0
+commands:
+  all_command:
     steps:
-      - checkout
       - run:         
           name: Install all dependencies
           command: yarn 
       - run: 
           name: Run test
           command: yarn test
+
+workflows: 
+  testing: 
+    jobs: 
+      - test
+      - ubuntu:
+          requires:
+            - test
+jobs:
+  test:
+    docker:
+      - image: cimg/node:14.15.0
+    steps:
+      - checkout
+      - all_command
       
 
 
